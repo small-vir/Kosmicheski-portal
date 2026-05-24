@@ -1,0 +1,477 @@
+/* ---------- ГЛОБАЛЬНЫЙ СБРОС И БАЗА ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #c3cbd8;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: system-ui, 'Segoe UI', 'Roboto', sans-serif;
+    /* ЗАЩИТА ОТ ГОРИЗОНТАЛЬНОГО СКРОЛЛА */
+    overflow-x: hidden;
+}
+
+/* ========================================
+   ФОНОВЫЕ БЛОКИ — ВСЕГДА 100% ШИРИНЫ
+   ======================================== */
+
+/* --- ШАПКА: фон на весь экран --- */
+.header {
+    width: 100%;          /* Всегда 100% экрана */
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+}
+
+.header-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 200px;
+    height: 120px;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* ========================================
+   КОНТЕНТ — МАКСИМУМ 1440px
+   ======================================== */
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Обёртка контента — фон прозрачный,
+   ширина ограничена 1440px, фон body (c3cbd8) виден по бокам */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1440px;    /* КОНТЕНТ НЕ ШИРЕ 1440px */
+    padding: 0 20px;      /* Безопасные отступы на малых экранах */
+}
+
+/* ---------- ТЕКСТ ---------- */
+.header-text {
+    text-align: center;
+    color: #03122f;
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 90px;
+    max-width: 1000px;    /* Текст уже 1440 — это нормально */
+    width: 100%;
+}
+
+/* ---------- СТРЕЛКА ---------- */
+.arrow-down {
+    display: flex;
+    justify-content: center;
+    margin-top: 90px;
+    width: 100%;
+}
+
+.arrow-down img {
+    width: 250px;
+    height: auto;         /* Сохраняем пропорции */
+}
+
+/* ---------- КАРТОЧКИ ---------- */
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 220px;
+    width: 100%;
+    margin-top: 85px;
+    flex-wrap: wrap;      /* Перенос на малых экранах */
+}
+
+.card {
+    width: 467px;
+    height: 467px;
+    background-color: #eeeff3;
+    border-radius: 16px;
+    box-shadow: 0 0 70px 0 #162e4d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 90px 0 #6085af;
+}
+
+.photoglav1,
+.photoglav2,
+.photoglav3 {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+}
+
+.card-3 {
+    margin-top: 150px;
+    margin-bottom: 80px;
+}
+
+/* ========================================
+   ПОДВАЛ — ФОН 100%, КОНТЕНТ 1440px
+   ======================================== */
+
+.footer {
+    background-color: #051332;  /* Фон на всю ширину */
+    width: 100%;
+    min-height: 350px;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.footer-inner {
+    max-width: 1440px;    /* Контент не шире 1440px */
+    width: 100%;
+    display: flex;
+    color: #ffffff;
+    padding-bottom: 50px;
+    flex-wrap: wrap;      /* Перенос элементов на узких экранах */
+    align-items: flex-start;
+}
+
+.footer-logo {
+    width: 246px;
+    height: 150px;
+    margin-top: 30px;
+    margin-left: 50px;
+    flex-shrink: 0;
+}
+
+.footer-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.footer-text-container {
+    width: 420px;
+    margin-top: 65px;
+    margin-left: 30px;
+    font-size: 32px;
+    line-height: 1.4;
+    flex-shrink: 0;
+}
+
+.footer-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 80px;
+    margin-left: 80px;
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.footer-nav-list li {
+    margin-bottom: 35px;
+    transition: transform 0.2s ease;
+}
+.footer-nav-list a {
+    color: #ffffff;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+}
+
+.footer-nav-list li:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.footer-nav-list a:active {
+    color: #aaaaaa;  /* Тёмно-серый цвет в момент нажатия */
+}
+
+.footer-nav-list li:last-child {
+    margin-bottom: 0;
+}
+
+.footer-social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 48px;
+    margin-left: auto;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.footer-social-icons li {
+    margin-bottom: 15px;
+}
+
+
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #051332;
+    transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+.social-icon:active {
+    opacity: 0.6;           /* Делаем иконку полупрозрачной (тёмный эффект) */
+    transform: scale(0.95); /* Лёгкое уменьшение для эффекта нажатия */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========== АДАПТИВ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ ========== */
+
+/* Телефоны (до 768px) */
+@media (max-width: 768px) {
+    /* Шапка */
+    .header {
+        height: 90px;
+    }
+    .logo-container {
+        width: 100px;
+        height: 60px;
+    }
+
+    /* Текст */
+    .header-text {
+        font-size: 20px !important;
+        margin-top: 25px !important;
+        margin-bottom: 0 !important;
+        padding: 0 20px !important;
+        line-height: 1.4;
+        height: auto !important;
+    }
+
+    /* Стрелка */
+    .arrow-down {
+        margin-top: 20px;
+    }
+    .arrow-down img {
+        width: 60px;
+    }
+
+    /* Контейнер карточек */
+    .cards-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 25px;
+        padding: 0 15px;
+    }
+
+    /* Все три карточки одинаковые */
+    .card-1,
+    .card-2,
+    .card-3 {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Третья карточка */
+    .card-3 {
+        margin-top: 13px;
+        margin-bottom: 40px;
+    }
+
+    /* Подвал */
+    .footer {
+        min-height: auto;
+        padding: 20px 0;
+    }
+    .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+        gap: 15px;
+    }
+    .footer-logo {
+        margin: 0 auto;
+        width: 70px;
+        height: 45px;
+    }
+    .footer-text-container {
+        font-size: 11px;
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    .footer-nav-list {
+        font-size: 13px;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    .footer-nav-list li {
+        margin-bottom: 0;
+    }
+    .footer-social-icons {
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+        margin: 0;
+    }
+    .social-icon {
+        width: 30px;
+        height: 30px;
+        margin-top: 0;
+    }
+    .social-icon img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Маленькие телефоны (до 480px) */
+@media (max-width: 480px) {
+    .header-text {
+        font-size: 18px !important;
+        margin-top: 20px !important;
+    }
+    
+    .card-1,
+    .card-2,
+    .card-3 {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .cards-container {
+        gap: 15px;
+    }
+    
+    .arrow-down img {
+        width: 50px;
+    }
+    
+    .footer-text-container {
+        font-size: 10px;
+        max-width: 220px;
+    }
+    .footer-nav-list {
+        font-size: 12px;
+    }
+    .social-icon {
+        width: 28px;
+        height: 28px;
+    }
+    .social-icon img {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* Очень маленькие телефоны (до 380px) */
+@media (max-width: 380px) {
+    .header-text {
+        font-size: 16px !important;
+        margin-top: 15px !important;
+    }
+    
+    .card-1,
+    .card-2,
+    .card-3 {
+        width: 115px;
+        height: 115px;
+    }
+    
+    .cards-container {
+        gap: 12px;
+    }
+    
+    .footer-text-container {
+        font-size: 9px;
+        max-width: 200px;
+    }
+    .footer-nav-list {
+        font-size: 11px;
+    }
+    .social-icon {
+        width: 25px;
+        height: 25px;
+    }
+    .social-icon img {
+        width: 25px;
+        height: 25px;
+    }
+}
+/* ===== ТЕНЬ ДЛЯ КАРТОЧЕК НА МОБИЛКЕ (МЕНЬШЕ И СВЕТЛЕЕ) ===== */
+@media (max-width: 768px) {
+    .card,
+    .card-1,
+    .card-2,
+    .card-3 {
+        box-shadow: 0 0 25px rgba(22, 46, 77, 0.8) !important;
+    }
+}
